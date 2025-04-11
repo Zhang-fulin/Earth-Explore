@@ -31,8 +31,8 @@ export default function GlobeComponent() {
             logarithmicDepthBuffer: true,
         }
         })
-      .globeImageUrl('/earth-blue-marble.jpg')
-      .backgroundImageUrl('/night-sky.png')
+      .globeImageUrl('/Earth-Explore/earth-blue-marble.jpg')
+      .backgroundImageUrl('/Earth-Explore/night-sky.png')
       .showGlobe(true)
       .showGraticules(true)
       .pointsData(samplePoints)
