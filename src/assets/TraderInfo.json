@@ -1,0 +1,19 @@
+[
+    {
+      "name": "上证指数",
+      "code": "XSHG",
+      "exchange": "上海证券交易所",
+      "location": "11 Wall St, New York, NY 10005, USA",
+      "lat": 40.7074,
+      "lng": -74.0113
+    },
+    {
+      "name": "深证成指",
+      "code": "XSEC",
+      "exchange": "深圳证券交易所",
+      "location": "11 Wall St, New York, NY 10005, USA",
+      "lat": 40.7074,
+      "lng": -74.0113
+    }
+  ]
+  
