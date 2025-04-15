@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState} from 'react'
+import { useEffect, useRef} from 'react'
 import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { startOfDay } from 'date-fns';
@@ -17,7 +17,7 @@ type News = {
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
 
-  const [news, setNews] = useState<News[]>([]);
+  // const [news, setNews] = useState<News[]>([]);
 
   useEffect(() => {
     if (!globeRef.current) return
@@ -47,7 +47,7 @@ export default function GlobeComponent() {
       if (error) {
         console.error('加载失败:', error.message);
       } else {
-        setNews(data);
+        console.log(data);
       }
     }
   
