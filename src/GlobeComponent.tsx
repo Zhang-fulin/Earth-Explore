@@ -1,11 +1,23 @@
-import { useEffect, useRef} from 'react'
+import { useEffect, useRef, useState} from 'react'
 import Globe from 'globe.gl'
+import { supabase } from './supabase'
+import { startOfDay } from 'date-fns';
 
+
+type News = {
+  id: string;
+  title: string;
+  context: string;
+  time:string;
+  lat:number;
+  lon:number;
+};
 
 
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
 
+  const [news, setNews] = useState<News[]>([]);
 
   useEffect(() => {
     if (!globeRef.current) return
@@ -23,6 +35,30 @@ export default function GlobeComponent() {
 
     world.controls().autoRotate = true
     world.controls().autoRotateSpeed = 0.5
+
+    async function fetchNews() {
+      const currentDateISOString = startOfDay(new Date()).toISOString();
+  
+      const { data, error } = await supabase
+        .from<'news', News>('news')
+        .select('*')
+        .gte('time', currentDateISOString);
+  
+      if (error) {
+        console.error('加载失败:', error.message);
+      } else {
+        setNews(data);
+      }
+    }
+  
+    fetchNews();
+  
+    const intervalId = setInterval(fetchNews, 5*60 * 1000); // 每5分钟调用一次
+  
+    return () => {
+      clearInterval(intervalId); // 清除定时器，避免内存泄露
+    };
+
   }, [])
 
   return (
@@ -42,8 +78,3 @@ export default function GlobeComponent() {
     </>
   )
 }
-
-
-// d8bd9053c6634c759e1824804ed8fdf2
-
-// https://api.twelvedata.com/market_state?code=XSHE&apikey=d8bd9053c6634c759e1824804ed8fdf2
