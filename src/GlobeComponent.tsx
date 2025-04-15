@@ -18,6 +18,7 @@ export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
 
   // const [news, setNews] = useState<News[]>([]);
+  
 
   useEffect(() => {
     if (!globeRef.current) return
@@ -35,7 +36,25 @@ export default function GlobeComponent() {
 
     world.controls().autoRotate = true
     world.controls().autoRotateSpeed = 0.5
+    
+    fetch('/Earth-Explore/submarine-cables.json')
+      .then(r => r.json())
+      .then(cablesGeo => {
+        let cablePaths:any[] = [];
+        cablesGeo.features.forEach(({ geometry, properties }:any) => {
+          geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
+        });
 
+        world
+          .pathsData(cablePaths)
+          .pathPoints('coords')
+          .pathPointLat((p:any) => p[1])
+          .pathPointLng((p:any) => p[0])
+          .pathColor((path:any) => path.properties.color)
+          .pathDashLength(0.1)
+          .pathDashGap(0.008)
+          .pathDashAnimateTime(10000);
+      });
     async function fetchNews() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
   
