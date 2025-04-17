@@ -37,24 +37,36 @@ export default function GlobeComponent() {
     world.controls().autoRotate = true
     world.controls().autoRotateSpeed = 0.5
     
-    fetch('/Earth-Explore/submarine-cables.json')
-      .then(r => r.json())
-      .then(cablesGeo => {
-        let cablePaths:any[] = [];
-        cablesGeo.features.forEach(({ geometry, properties }:any) => {
-          geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
-        });
-
-        world
-          .pathsData(cablePaths)
-          .pathPoints('coords')
-          .pathPointLat((p:any) => p[1])
-          .pathPointLng((p:any) => p[0])
-          .pathColor((path:any) => path.properties.color)
-          .pathDashLength(0.1)
-          .pathDashGap(0.008)
-          .pathDashAnimateTime(10000);
+    fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
+      let cablePaths:any[] = [];
+      cablesGeo.features.forEach(({ geometry, properties }:any) => {
+        geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
       });
+
+      world
+        .pathsData(cablePaths)
+        .pathPoints('coords')
+        .pathPointLat((p:any) => p[1])
+        .pathPointLng((p:any) => p[0])
+        .pathColor((path:any) => path.properties.color)
+        .pathDashLength(0.1)
+        .pathDashGap(0.008)
+        .pathDashAnimateTime(10000);
+    });
+
+    fetch('/Earth-Explore/city.json').then(res => res.json()).then(places => {
+      world
+        .labelsData(places.features)
+        .labelLat((d:any) => d.properties.latitude)
+        .labelLng((d:any) => d.properties.longitude)
+        .labelText((d:any) => d.properties.name)
+        .labelSize(0.4)
+        .labelDotRadius(0.1)
+        .labelColor(() => 'rgba(0, 255, 64, 0.75)')
+        .labelResolution(10);
+    });
+
+
     async function fetchNews() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
   
@@ -72,10 +84,10 @@ export default function GlobeComponent() {
   
     fetchNews();
   
-    const intervalId = setInterval(fetchNews, 5*60 * 1000); // 每5分钟调用一次
+    const intervalId = setInterval(fetchNews, 5*60 * 1000);
   
     return () => {
-      clearInterval(intervalId); // 清除定时器，避免内存泄露
+      clearInterval(intervalId);
     };
 
   }, [])
