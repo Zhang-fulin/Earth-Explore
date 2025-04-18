@@ -54,16 +54,18 @@ export default function GlobeComponent() {
         .pathDashAnimateTime(10000);
     });
 
+
     fetch('/Earth-Explore/city.json').then(res => res.json()).then(places => {
+      
       world
         .labelsData(places.features)
         .labelLat((d:any) => d.properties.latitude)
         .labelLng((d:any) => d.properties.longitude)
         .labelText((d:any) => d.properties.name)
-        .labelSize(0.4)
-        .labelDotRadius(0.1)
-        .labelColor(() => 'rgba(0, 255, 64, 0.75)')
-        .labelResolution(10);
+        .labelSize(0.6)
+        .labelDotRadius(0.2)
+        .labelColor(() => 'rgba(0, 255, 60, 0.75)')
+        .labelResolution(4);
     });
 
 
