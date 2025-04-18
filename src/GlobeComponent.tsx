@@ -56,14 +56,15 @@ export default function GlobeComponent() {
 
 
     fetch('/Earth-Explore/city.json').then(res => res.json()).then(places => {
-      
+
       world
         .labelsData(places.features)
         .labelLat((d:any) => d.properties.latitude)
         .labelLng((d:any) => d.properties.longitude)
         .labelText((d:any) => d.properties.name)
-        .labelSize(0.6)
-        .labelDotRadius(0.2)
+        .labelAltitude(0.01)
+        .labelSize(0.2)
+        .labelDotRadius(0.3)
         .labelColor(() => 'rgba(0, 255, 60, 0.75)')
         .labelResolution(4);
     });
