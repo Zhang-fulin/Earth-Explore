@@ -3,11 +3,12 @@ import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { startOfDay } from 'date-fns';
 import { FontLoader } from 'three-stdlib';
+import { da } from 'date-fns/locale';
 
 type News = {
   id: string;
   title: string;
-  context: string;
+  content: string;
   time:string;
   lat:number;
   lon:number;
@@ -66,7 +67,7 @@ export default function GlobeComponent() {
             .labelLat((d: any) => d.latitude)
             .labelLng((d: any) => d.longitude)
             .labelText((d: any) => d.name)
-            .labelAltitude(0.01)
+            .labelAltitude(0.005)
             .labelSize(0.3)
             .labelDotRadius(0.2)
             .labelColor(() => 'rgba(0, 255, 60, 0.75)')
@@ -74,6 +75,57 @@ export default function GlobeComponent() {
         });
     });
 
+
+    const MessageBox = (d:News) => `
+    <div style="
+      position: relative;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 12px;
+      max-width: 240px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    ">
+      <div style="
+        font-weight: 600;
+        font-size: 15px;
+        color: #222;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      ">
+        ${d.title || '无标题'}
+      </div>
+      <div style="
+        font-size: 13px;
+        color: #444;
+        line-height: 1.6;
+      ">
+        ${d.content || '无内容sssssssssssssssssssssssssssssssssssssss'}
+      </div>
+      <div style="
+        position: absolute;
+        bottom: -10px;
+        left: calc(50% - 10px);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid rgba(255, 255, 255, 0.6);
+      "></div>
+    </div>
+  `;
+
+  const N = 30;
+  const gData = [...Array(N).keys()].map(() => ({
+    lat: (Math.random() - 0.5) * 180,
+    lng: (Math.random() - 0.5) * 360,
+    size: 7 + Math.random() * 30,
+    color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
+  }));
+
+  console.log(gData);
 
     async function fetchNews() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
@@ -86,7 +138,35 @@ export default function GlobeComponent() {
       if (error) {
         console.error('加载失败:', error.message);
       } else {
-        console.log(data);
+        
+        world
+          .htmlElementsData(data)
+          .htmlElement((d:any) => {
+            const el = document.createElement('div');
+            el.innerHTML = MessageBox(d);
+            el.style.width = `100px`;
+            el.style.transition = 'opacity 250ms';
+            el.style.pointerEvents = 'auto';
+            el.style.cursor = 'pointer';
+            el.onclick = () => { console.info(d); };
+            return el;
+          })
+          .htmlAltitude(0.05)
+          .htmlLat((d: News) => d.lat)
+          .htmlLng((d: News) => d.lon)
+          .htmlElementVisibilityModifier((el:any, isVisible:Boolean) => el.style.opacity = isVisible ? 1 : 0);
+
+          const gData = data.map((d:News) => ({
+            lat: d.lat,
+            lng: d.lon,
+            color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
+          }));
+          
+          world 
+            .pointsData(gData)
+            .pointAltitude(0.01)
+            .pointColor('color');  
+
       }
     }
   
