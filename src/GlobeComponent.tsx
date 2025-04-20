@@ -37,22 +37,23 @@ export default function GlobeComponent() {
     world.controls().autoRotate = true
     world.controls().autoRotateSpeed = 0.5
     
-    fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
-      let cablePaths:any[] = [];
-      cablesGeo.features.forEach(({ geometry, properties }:any) => {
-        geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
-      });
+    // fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
+    //   let cablePaths:any[] = [];
+    //   cablesGeo.features.forEach(({ geometry, properties }:any) => {
+    //     geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
+    //   });
 
-      world
-        .pathsData(cablePaths)
-        .pathPoints('coords')
-        .pathPointLat((p:any) => p[1])
-        .pathPointLng((p:any) => p[0])
-        .pathColor((path:any) => path.properties.color)
-        .pathDashLength(0.1)
-        .pathDashGap(0.008)
-        .pathDashAnimateTime(10000);
-    });
+    //   world
+    //     .pathsData(cablePaths)
+    //     .pathPoints('coords')
+    //     .pathPointLat((p:any) => p[1])
+    //     .pathPointLng((p:any) => p[0])
+    //     .pathColor((path:any) => path.properties.color)
+    //     .pathDashLength(0.1)
+    //     .pathStroke(2)
+    //     .pathDashGap(0.008)
+    //     .pathDashAnimateTime(10000);
+    // });
 
 
     fetch('/Earth-Explore/city.json').then(res => res.json()).then(places => {
@@ -64,7 +65,7 @@ export default function GlobeComponent() {
         .labelText((d:any) => d.properties.name)
         .labelAltitude(0.01)
         .labelSize(0.5)
-        .labelDotRadius(0.3)
+        .labelDotRadius(0.5)
         .labelColor(() => 'rgba(0, 255, 60, 0.75)')
         .labelResolution(4);
     });
