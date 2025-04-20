@@ -63,7 +63,7 @@ export default function GlobeComponent() {
         .labelLng((d:any) => d.properties.longitude)
         .labelText((d:any) => d.properties.name)
         .labelAltitude(0.01)
-        .labelSize(0.2)
+        .labelSize(0.5)
         .labelDotRadius(0.3)
         .labelColor(() => 'rgba(0, 255, 60, 0.75)')
         .labelResolution(4);
