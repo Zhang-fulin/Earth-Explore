@@ -2,7 +2,7 @@ import { useEffect, useRef} from 'react'
 import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { startOfDay } from 'date-fns';
-
+import { FontLoader } from 'three-stdlib';
 
 type News = {
   id: string;
@@ -36,7 +36,7 @@ export default function GlobeComponent() {
 
     world.controls().autoRotate = true
     world.controls().autoRotateSpeed = 0.5
-    
+
     // fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
     //   let cablePaths:any[] = [];
     //   cablesGeo.features.forEach(({ geometry, properties }:any) => {
@@ -50,24 +50,28 @@ export default function GlobeComponent() {
     //     .pathPointLng((p:any) => p[0])
     //     .pathColor((path:any) => path.properties.color)
     //     .pathDashLength(0.1)
-    //     .pathStroke(2)
+    //     .pathStroke(1)
     //     .pathDashGap(0.008)
     //     .pathDashAnimateTime(10000);
     // });
 
-
-    fetch('/Earth-Explore/city.json').then(res => res.json()).then(places => {
-
-      world
-        .labelsData(places.features)
-        .labelLat((d:any) => d.properties.latitude)
-        .labelLng((d:any) => d.properties.longitude)
-        .labelText((d:any) => d.properties.name)
-        .labelAltitude(0.01)
-        .labelSize(0.5)
-        .labelDotRadius(0.5)
-        .labelColor(() => 'rgba(0, 255, 60, 0.75)')
-        .labelResolution(4);
+    const loader = new FontLoader();
+    loader.load('/Earth-Explore/font.json', (font:any) => {
+      fetch('/Earth-Explore/city.json')
+        .then((res) => res.json())
+        .then((city) => {
+          world
+            .labelsData(city)
+            .labelTypeFace(font.data) // 传递字体对象，而不是路径
+            .labelLat((d: any) => d.latitude)
+            .labelLng((d: any) => d.longitude)
+            .labelText((d: any) => d.name)
+            .labelAltitude(0.01)
+            .labelSize(0.3)
+            .labelDotRadius(0.2)
+            .labelColor(() => 'rgba(0, 255, 60, 0.75)')
+            .labelResolution(4);
+        });
     });
 
 

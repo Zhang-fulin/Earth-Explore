@@ -21,12 +21,14 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "three": "^0.175.0",
-    "three-globe": "^2.42.4"
+    "three-globe": "^2.42.4",
+    "three-stdlib": "^2.35.15"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
+    "@types/three": "^0.175.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
