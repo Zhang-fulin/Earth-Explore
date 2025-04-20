@@ -73,5 +73,10 @@
       "name": "大连",
       "latitude": 38.9140,
       "longitude": 121.6147
+    },
+    {
+        "name": "潍坊",
+        "latitude": 36.7069,
+        "longitude": 119.1618
     }
   ]
