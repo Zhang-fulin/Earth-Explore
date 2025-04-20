@@ -3,7 +3,6 @@ import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { startOfDay } from 'date-fns';
 import { FontLoader } from 'three-stdlib';
-import { da } from 'date-fns/locale';
 
 type News = {
   id: string;
@@ -138,7 +137,7 @@ export default function GlobeComponent() {
       if (error) {
         console.error('加载失败:', error.message);
       } else {
-        
+
         world
           .htmlElementsData(data)
           .htmlElement((d:any) => {
