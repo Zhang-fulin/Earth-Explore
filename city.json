@@ -3141,61 +3141,6 @@
             "properties": {
                 "scalerank": 3,
                 "natscale": 110,
-                "labelrank": 8,
-                "featurecla": "Admin-0 capital",
-                "name": "Chișinău",
-                "namepar": null,
-                "namealt": null,
-                "diffascii": 0,
-                "nameascii": "Chisinau",
-                "adm0cap": 1,
-                "capalt": null,
-                "capin": null,
-                "worldcity": 0,
-                "megacity": 0,
-                "sov0name": "Moldova",
-                "sov_a3": "MDA",
-                "adm0name": "Moldova",
-                "adm0_a3": "MDA",
-                "adm1name": "Chisinau",
-                "iso_a2": "MD",
-                "note": null,
-                "latitude": 47.0050236197,
-                "longitude": 28.8577111397,
-                "changed": 0,
-                "namediff": 0,
-                "diffnote": null,
-                "pop_max": 688134,
-                "pop_min": 635994,
-                "pop_other": 664472,
-                "rank_max": 11,
-                "rank_min": 11,
-                "geonameid": 618426,
-                "meganame": null,
-                "ls_name": "Chisinau",
-                "ls_match": 1,
-                "checkme": 5,
-                "min_zoom": 5
-            },
-            "bbox": [
-                28.857711,
-                47.005024,
-                28.857711,
-                47.005024
-            ],
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    28.857711,
-                    47.005024
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "scalerank": 3,
-                "natscale": 110,
                 "labelrank": 6,
                 "featurecla": "Admin-0 capital",
                 "name": "Maputo",
