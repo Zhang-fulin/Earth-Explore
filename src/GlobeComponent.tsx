@@ -164,7 +164,6 @@ export default function GlobeComponent() {
 
     // 👇 缩放控制 message box 大小
     const camera = world.camera();
-    const controls = world.controls();
 
     function updateMessageBoxScale() {
       const distance = camera.position.length(); // 距离原点距离
