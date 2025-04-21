@@ -13,12 +13,13 @@ type News = {
   lon: number;
 };
 
+const version = '1.0.0'
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
   
   // const [news, setNews] = useState<News[]>([]);
  
-
+  console.log("version", version)
   useEffect(() => {
     if (!globeRef.current) return
 
