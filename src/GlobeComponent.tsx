@@ -87,6 +87,8 @@ export default function GlobeComponent() {
     word-wrap: break-word;
     overflow-wrap: break-word;
     transform-origin: center center;
+    user-select: none;
+    outline: none;
   ">
     <div style="
       font-weight: 600;
