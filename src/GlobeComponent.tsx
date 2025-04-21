@@ -88,7 +88,9 @@ export default function GlobeComponent() {
     overflow-wrap: break-word;
     transform-origin: center center;
     user-select: none;
+    -webkit-user-select: none;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
   ">
     <div style="
       font-weight: 600;
