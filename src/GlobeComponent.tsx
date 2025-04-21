@@ -174,12 +174,16 @@ export default function GlobeComponent() {
       });
     }
 
-    controls.addEventListener('change', updateMessageBoxScale);
-    updateMessageBoxScale(); // 初始执行一次
+    let animationFrameId: number;
+    function animate() {
+      updateMessageBoxScale();
+      animationFrameId = requestAnimationFrame(animate);
+    }
+    animate(); // 启动持续缩放更新
 
     return () => {
       clearInterval(intervalId);
-      controls.removeEventListener('change', updateMessageBoxScale);
+      cancelAnimationFrame(animationFrameId);
     };
   }, [])
 
