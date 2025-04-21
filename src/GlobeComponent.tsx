@@ -1,4 +1,4 @@
-import { useEffect, useRef} from 'react'
+import { useEffect, useRef } from 'react'
 import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { startOfDay } from 'date-fns';
@@ -8,35 +8,34 @@ type News = {
   id: string;
   title: string;
   content: string;
-  time:string;
-  lat:number;
-  lon:number;
+  time: string;
+  lat: number;
+  lon: number;
 };
-
 
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
-
-  // const [news, setNews] = useState<News[]>([]);
   
+  // const [news, setNews] = useState<News[]>([]);
+ 
 
   useEffect(() => {
     if (!globeRef.current) return
 
     const world = Globe()(globeRef.current, {
-        rendererConfig: {
-            antialias: true,
-            logarithmicDepthBuffer: true,
-        }
-        })
+      rendererConfig: {
+        antialias: true,
+        logarithmicDepthBuffer: true,
+      }
+    })
       .globeImageUrl('/Earth-Explore/earth-blue-marble.jpg')
       .backgroundImageUrl('/Earth-Explore/night-sky.png')
       .showGlobe(true)
       .showGraticules(true)
 
-    world.controls().autoRotate = true
-    world.controls().autoRotateSpeed = 0.5
-
+    // world.controls().autoRotate = true
+    // world.controls().autoRotateSpeed = 0.5
+    
     // fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
     //   let cablePaths:any[] = [];
     //   cablesGeo.features.forEach(({ geometry, properties }:any) => {
@@ -54,29 +53,27 @@ export default function GlobeComponent() {
     //     .pathDashGap(0.008)
     //     .pathDashAnimateTime(10000);
     // });
-
     const loader = new FontLoader();
-    loader.load('/Earth-Explore/font.json', (font:any) => {
+    loader.load('/Earth-Explore/font.json', (font: any) => {
       fetch('/Earth-Explore/city.json')
         .then((res) => res.json())
         .then((city) => {
           world
             .labelsData(city)
-            .labelTypeFace(font.data) // 传递字体对象，而不是路径
+            .labelTypeFace(font.data)
             .labelLat((d: any) => d.latitude)
             .labelLng((d: any) => d.longitude)
             .labelText((d: any) => d.name)
             .labelAltitude(0.005)
             .labelSize(0.3)
-            .labelDotRadius(0.2)
+            .labelDotRadius(0.1)
             .labelColor(() => 'rgba(0, 255, 60, 0.75)')
             .labelResolution(4);
         });
     });
 
-
     const MessageBox = (d: News) => `
-  <div style="
+  <div class="globe-message-box" style="
     position: relative;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
@@ -89,6 +86,7 @@ export default function GlobeComponent() {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    transform-origin: center center;
   ">
     <div style="
       font-weight: 600;
@@ -115,26 +113,25 @@ export default function GlobeComponent() {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-top: 10px solid rgba(255, 255, 255, 0.6);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 三角形也有阴影了 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     "></div>
   </div>
 `;
 
     async function fetchNews() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
-  
+
       const { data, error } = await supabase
         .from<'news', News>('news')
         .select('*')
         .gte('time', currentDateISOString);
-  
+
       if (error) {
         console.error('加载失败:', error.message);
       } else {
-
         world
           .htmlElementsData(data)
-          .htmlElement((d:any) => {
+          .htmlElement((d: any) => {
             const el = document.createElement('div');
             el.innerHTML = MessageBox(d);
             el.style.width = `100px`;
@@ -144,49 +141,60 @@ export default function GlobeComponent() {
             el.onclick = () => { console.info(d); };
             return el;
           })
-          .htmlAltitude(0.05)
+          // .htmlAltitude(0.05)
           .htmlLat((d: News) => d.lat)
           .htmlLng((d: News) => d.lon)
-          .htmlElementVisibilityModifier((el:any, isVisible:Boolean) => el.style.opacity = isVisible ? 1 : 0);
+          .htmlElementVisibilityModifier((el: any, isVisible: Boolean) => el.style.opacity = isVisible ? '1' : '0');
 
-          const gData = data.map((d:News) => ({
-            lat: d.lat,
-            lng: d.lon,
-            color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
-          }));
-          
-          world 
-            .pointsData(gData)
-            .pointAltitude(0.01)
-            .pointColor('color');  
+        // const gData = data.map((d: News) => ({
+        //   lat: d.lat,
+        //   lng: d.lon,
+        //   color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
+        // }));
 
+        // world
+        //   .pointsData(gData)
+        //   .pointAltitude(0.01)
+        //   .pointColor('color');
       }
     }
-  
+
     fetchNews();
-  
-    const intervalId = setInterval(fetchNews, 5*60 * 1000);
-  
+    const intervalId = setInterval(fetchNews, 5 * 60 * 1000);
+
+    // 👇 缩放控制 message box 大小
+    const camera = world.camera();
+    const controls = world.controls();
+
+    function updateMessageBoxScale() {
+      const distance = camera.position.length(); // 距离原点距离
+      const scale = Math.min(1, Math.max(0.3, distance / 30)); // 缩放范围限定
+      document.querySelectorAll('.globe-message-box').forEach(el => {
+        (el as HTMLElement).style.transform = `scale(${scale})`;
+      });
+    }
+
+    controls.addEventListener('change', updateMessageBoxScale);
+    updateMessageBoxScale(); // 初始执行一次
+
     return () => {
       clearInterval(intervalId);
+      controls.removeEventListener('change', updateMessageBoxScale);
     };
-
   }, [])
 
   return (
-    <>
-      <div
-        ref={globeRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'black',
-          overflow: 'hidden'
-        }}
-      />
-    </>
+    <div
+      ref={globeRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'black',
+        overflow: 'hidden'
+      }}
+    />
   )
 }
