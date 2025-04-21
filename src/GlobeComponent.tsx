@@ -75,56 +75,50 @@ export default function GlobeComponent() {
     });
 
 
-    const MessageBox = (d:News) => `
+    const MessageBox = (d: News) => `
+  <div style="
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    max-width: 240px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  ">
     <div style="
-      position: relative;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      padding: 12px;
-      max-width: 240px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: #222;
+      margin-bottom: 6px;
+      line-height: 1.4;
     ">
-      <div style="
-        font-weight: 600;
-        font-size: 15px;
-        color: #222;
-        margin-bottom: 8px;
-        line-height: 1.4;
-      ">
-        ${d.title || '无标题'}
-      </div>
-      <div style="
-        font-size: 13px;
-        color: #444;
-        line-height: 1.6;
-      ">
-        ${d.content || '无内容sssssssssssssssssssssssssssssssssssssss'}
-      </div>
-      <div style="
-        position: absolute;
-        bottom: -10px;
-        left: calc(50% - 10px);
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid rgba(255, 255, 255, 0.6);
-      "></div>
+      ${d.title || '无标题'}
     </div>
-  `;
-
-  const N = 30;
-  const gData = [...Array(N).keys()].map(() => ({
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: 7 + Math.random() * 30,
-    color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]
-  }));
-
-  console.log(gData);
+    <div style="
+      font-size: 9px;
+      color: #444;
+      line-height: 1.6;
+    ">
+      ${d.content || '无内容'}
+    </div>
+    <div style="
+      position: absolute;
+      bottom: -10px;
+      left: calc(50% - 10px);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 三角形也有阴影了 */
+    "></div>
+  </div>
+`;
 
     async function fetchNews() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
