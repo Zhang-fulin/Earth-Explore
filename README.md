@@ -55,6 +55,6 @@ Earth Explore 是一个使用 **Three.js** 和 **Globe.gl** 构建的 3D 地球�
 
 ## 预览截图
 
-<img src="微信图片_20250429031129.jpg" alt="alt text" width="50%">
+<img src="微信图片_20250429031129.jpg" alt="alt text" width="30%">
 
 如果你喜欢这个项目，欢迎点个 Star ⭐！
