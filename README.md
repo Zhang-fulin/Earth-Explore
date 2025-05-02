@@ -5,7 +5,7 @@ Earth Explore 是一个使用 **Three.js** 和 **Globe.gl** 构建的 3D 地球�
 在线预览地址：[https://zhang-fulin.github.io/Earth-Explore](https://zhang-fulin.github.io/Earth-Explore)
 
 此外，项目还开发了对应的移动应用版：
-- App 仓库地址：[https://github.com/Zhang-fulin/Earth-Explore-App](https://github.com/Zhang-fulin.github.io/Earth-Explore-App)
+- App 仓库地址：[https://github.com/Zhang-fulin/Earth-Explore-App](https://github.com/Zhang-fulin/Earth-Explore-App)
 - 基于 **Expo** 和 **React Native** 开发，通过 WebView 嵌入展示 Earth Explore 网站。
 
 项目中的地球新闻数据来源于独立的数据处理仓库：
@@ -55,8 +55,6 @@ Earth Explore 是一个使用 **Three.js** 和 **Globe.gl** 构建的 3D 地球�
 
 ## 预览截图
 
-（可以根据需要插入截图位置）
-
-![alt text](微信图片_20250429031129.jpg){: width=50% }
+<img src="微信图片_20250429031129.jpg" alt="alt text" width="30%">
 
 如果你喜欢这个项目，欢迎点个 Star ⭐！
