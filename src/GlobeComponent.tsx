@@ -149,7 +149,7 @@ export default function GlobeComponent() {
           // .htmlAltitude(0.05)
           .htmlLat((d: News) => d.lat)
           .htmlLng((d: News) => d.lon)
-          .htmlElementVisibilityModifier((el: any, isVisible: Boolean) => el.style.opacity = isVisible ? '1' : '0');
+          .htmlElementVisibilityModifier((el: any, isVisible: Boolean) => el.style.visibility = isVisible ? 'visible' : 'hidden');
 
         // const gData = data.map((d: News) => ({
         //   lat: d.lat,
