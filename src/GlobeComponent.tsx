@@ -134,8 +134,16 @@ export default function GlobeComponent() {
       if (error) {
         console.error('加载失败:', error.message);
       } else {
+        const uniqueDataMap = new Map();
+        data.forEach((item: News) => {
+          if (!uniqueDataMap.has(item.content)) {
+            uniqueDataMap.set(item.content, item);
+          }
+        });
+        const dedupedData = Array.from(uniqueDataMap.values());
+
         world
-          .htmlElementsData(data)
+          .htmlElementsData(dedupedData)
           .htmlElement((d: any) => {
             const el = document.createElement('div');
             el.innerHTML = MessageBox(d);
