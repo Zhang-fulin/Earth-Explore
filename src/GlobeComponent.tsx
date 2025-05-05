@@ -127,7 +127,7 @@ export default function GlobeComponent() {
       const currentDateISOString = startOfDay(new Date()).toISOString();
 
       const { data, error } = await supabase
-        .from<'news-filter', News>('news-filter')
+        .from<'today-news', News>('today-news')
         .select('*')
         .gte('time', currentDateISOString);
 
