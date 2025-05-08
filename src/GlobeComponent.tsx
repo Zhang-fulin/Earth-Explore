@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Globe from 'globe.gl'
 import { supabase } from './supabase'
-import { startOfDay } from 'date-fns';
 import { FontLoader } from 'three-stdlib';
 
 type News = {
@@ -124,7 +123,13 @@ export default function GlobeComponent() {
 `;
 
     async function fetchNews() {
-      const currentDateISOString = startOfDay(new Date()).toISOString();
+      const now = new Date();
+      const startOfDay = new Date(Date.UTC(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate()
+    ));
+      const currentDateISOString = startOfDay.toISOString();
 
       const { data, error } = await supabase
         .from<'today-news', News>('today-news')
