@@ -35,6 +35,61 @@
       "longitude": 118.7969
     },
     {
+      "name": "无锡",
+      "latitude": 31.5749,
+      "longitude": 120.3040
+    },
+    {
+      "name": "徐州",
+      "latitude": 34.2044,
+      "longitude": 117.2841
+    },
+    {
+      "name": "常州",
+      "latitude": 31.7723,
+      "longitude": 119.9543
+    },
+    {
+      "name": "苏州",
+      "latitude": 31.2989,
+      "longitude": 120.5853
+    },
+    {
+      "name": "南通",
+      "latitude": 31.9802,
+      "longitude": 120.8943
+    },
+    {
+      "name": "连云港",
+      "latitude": 34.5967,
+      "longitude": 119.2216
+    },
+    {
+      "name": "淮安",
+      "latitude": 33.6104,
+      "longitude": 119.0153
+    },
+    {
+      "name": "盐城",
+      "latitude": 33.3557,
+      "longitude": 120.1635
+    },
+    {
+      "name": "扬州",
+      "latitude": 32.3936,
+      "longitude": 119.4129
+    },
+    {
+      "name": "泰州",
+      "latitude": 32.4760,
+      "longitude": 119.9151
+    },
+    {
+      "name": "宿迁",
+      "latitude": 33.9630,
+      "longitude": 118.2755
+    },
+    {
       "name": "西安",
       "latitude": 34.3416,
       "longitude": 108.9398
@@ -143,11 +198,6 @@
       "name": "温哥华",
       "latitude": 49.2827,
       "longitude": -123.1207
-    },
-    {
-      "name": "迪拜",
-      "latitude": 25.276987,
-      "longitude": 55.296249
     },
     {
       "name": "莫斯科",
