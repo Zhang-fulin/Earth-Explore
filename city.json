@@ -1,0 +1,592 @@
+[
+    {
+      "name": "北京",
+      "latitude": 39.9042,
+      "longitude": 116.4074
+    },
+    {
+      "name": "上海",
+      "latitude": 31.2304,
+      "longitude": 121.4737
+    },
+    {
+      "name": "广州",
+      "latitude": 23.1291,
+      "longitude": 113.2644
+    },
+    {
+      "name": "深圳",
+      "latitude": 22.5431,
+      "longitude": 114.0579
+    },
+    {
+      "name": "杭州",
+      "latitude": 30.2741,
+      "longitude": 120.1551
+    },
+    {
+      "name": "成都",
+      "latitude": 30.5728,
+      "longitude": 104.0668
+    },
+    {
+      "name": "南京",
+      "latitude": 32.0603,
+      "longitude": 118.7969
+    },
+    {
+      "name": "西安",
+      "latitude": 34.3416,
+      "longitude": 108.9398
+    },
+    {
+      "name": "重庆",
+      "latitude": 29.5630,
+      "longitude": 106.5516
+    },
+    {
+      "name": "武汉",
+      "latitude": 30.5928,
+      "longitude": 114.3055
+    },
+    {
+      "name": "天津",
+      "latitude": 39.3434,
+      "longitude": 117.3616
+    },
+    {
+      "name": "厦门",
+      "latitude": 24.4798,
+      "longitude": 118.0894
+    },
+    {
+      "name": "哈尔滨",
+      "latitude": 45.8038,
+      "longitude": 126.5349
+    },
+    {
+      "name": "青岛",
+      "latitude": 36.0671,
+      "longitude": 120.3826
+    },
+    {
+      "name": "大连",
+      "latitude": 38.9140,
+      "longitude": 121.6147
+    },
+    {
+        "name": "潍坊",
+        "latitude": 36.7069,
+        "longitude": 119.1618
+    },
+    {
+      "name": "纽约",
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    },
+    {
+      "name": "伦敦",
+      "latitude": 51.5074,
+      "longitude": -0.1278
+    },
+    {
+      "name": "巴黎",
+      "latitude": 48.8566,
+      "longitude": 2.3522
+    },
+    {
+      "name": "柏林",
+      "latitude": 52.5200,
+      "longitude": 13.4050
+    },
+    {
+      "name": "东京",
+      "latitude": 35.6895,
+      "longitude": 139.6917
+    },
+    {
+      "name": "首尔",
+      "latitude": 37.5665,
+      "longitude": 126.9780
+    },
+    {
+      "name": "新加坡",
+      "latitude": 1.3521,
+      "longitude": 103.8198
+    },
+    {
+      "name": "悉尼",
+      "latitude": -33.8688,
+      "longitude": 151.2093
+    },
+    {
+      "name": "洛杉矶",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    {
+      "name": "旧金山",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    {
+      "name": "芝加哥",
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    {
+      "name": "多伦多",
+      "latitude": 43.6532,
+      "longitude": -79.3832
+    },
+    {
+      "name": "温哥华",
+      "latitude": 49.2827,
+      "longitude": -123.1207
+    },
+    {
+      "name": "迪拜",
+      "latitude": 25.276987,
+      "longitude": 55.296249
+    },
+    {
+      "name": "莫斯科",
+      "latitude": 55.7558,
+      "longitude": 37.6173
+    },
+    {
+      "name": "圣保罗",
+      "latitude": -23.5505,
+      "longitude": -46.6333
+    },
+    {
+      "name": "布宜诺斯艾利斯",
+      "latitude": -34.6037,
+      "longitude": -58.3816
+    },
+    {
+      "name": "约翰内斯堡",
+      "latitude": -26.2041,
+      "longitude": 28.0473
+    },
+    {
+      "name": "开罗",
+      "latitude": 30.0444,
+      "longitude": 31.2357
+    },
+    {
+      "name": "孟买",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    {
+      "name": "新德里",
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    {
+      "name": "华盛顿",
+      "latitude": 38.9072,
+      "longitude": -77.0369
+    },
+    {
+      "name": "休斯顿",
+      "latitude": 29.7604,
+      "longitude": -95.3698
+    },
+    {
+      "name": "西雅图",
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    },
+    {
+      "name": "波士顿",
+      "latitude": 42.3601,
+      "longitude": -71.0589
+    },
+    {
+      "name": "迈阿密",
+      "latitude": 25.7617,
+      "longitude": -80.1918
+    },
+    {
+      "name": "巴塞罗那",
+      "latitude": 41.3851,
+      "longitude": 2.1734
+    },
+    {
+      "name": "马德里",
+      "latitude": 40.4168,
+      "longitude": -3.7038
+    },
+    {
+      "name": "米兰",
+      "latitude": 45.4642,
+      "longitude": 9.1900
+    },
+    {
+      "name": "阿姆斯特丹",
+      "latitude": 52.3676,
+      "longitude": 4.9041
+    },
+    {
+      "name": "布鲁塞尔",
+      "latitude": 50.8503,
+      "longitude": 4.3517
+    },
+    {
+      "name": "日内瓦",
+      "latitude": 46.2044,
+      "longitude": 6.1432
+    },
+    {
+      "name": "曼谷",
+      "latitude": 13.7563,
+      "longitude": 100.5018
+    },
+    {
+      "name": "吉隆坡",
+      "latitude": 3.1390,
+      "longitude": 101.6869
+    },
+    {
+      "name": "胡志明市",
+      "latitude": 10.7769,
+      "longitude": 106.7009
+    },
+    {
+      "name": "马尼拉",
+      "latitude": 14.5995,
+      "longitude": 120.9842
+    },
+    {
+      "name": "雅加达",
+      "latitude": -6.2088,
+      "longitude": 106.8456
+    },
+    {
+      "name": "墨尔本",
+      "latitude": -37.8136,
+      "longitude": 144.9631
+    },
+    {
+      "name": "奥克兰",
+      "latitude": -36.8485,
+      "longitude": 174.7633
+    },
+    {
+      "name": "利马",
+      "latitude": -12.0464,
+      "longitude": -77.0428
+    },
+    {
+      "name": "圣地亚哥",
+      "latitude": -33.4489,
+      "longitude": -70.6693
+    },
+    {
+      "name": "内罗毕",
+      "latitude": -1.2921,
+      "longitude": 36.8219
+    },
+    {
+      "name": "拉各斯",
+      "latitude": 6.5244,
+      "longitude": 3.3792
+    },
+    {
+      "name": "伊斯坦布尔",
+      "latitude": 41.0082,
+      "longitude": 28.9784
+    },
+    {
+      "name": "特拉维夫",
+      "latitude": 32.0853,
+      "longitude": 34.7818
+    },
+    {
+      "name": "利雅得",
+      "latitude": 24.7136,
+      "longitude": 46.6753
+    },
+    {
+      "name": "底特律",
+      "latitude": 42.3314,
+      "longitude": -83.0458
+    },
+    {
+      "name": "费城",
+      "latitude": 39.9526,
+      "longitude": -75.1652
+    },
+    {
+      "name": "亚特兰大",
+      "latitude": 33.7490,
+      "longitude": -84.3880
+    },
+    {
+      "name": "蒙特利尔",
+      "latitude": 45.5017,
+      "longitude": -73.5673
+    },
+    {
+      "name": "渥太华",
+      "latitude": 45.4215,
+      "longitude": -75.6990
+    },
+    {
+      "name": "慕尼黑",
+      "latitude": 48.1351,
+      "longitude": 11.5820
+    },
+    {
+      "name": "法兰克福",
+      "latitude": 50.1109,
+      "longitude": 8.6821
+    },
+    {
+      "name": "苏黎世",
+      "latitude": 47.3769,
+      "longitude": 8.5417
+    },
+    {
+      "name": "奥斯陆",
+      "latitude": 59.9139,
+      "longitude": 10.7522
+    },
+    {
+      "name": "斯德哥尔摩",
+      "latitude": 59.3293,
+      "longitude": 18.0686
+    },
+    {
+      "name": "赫尔辛基",
+      "latitude": 60.1699,
+      "longitude": 24.9384
+    },
+    {
+      "name": "哥本哈根",
+      "latitude": 55.6761,
+      "longitude": 12.5683
+    },
+    {
+      "name": "里约热内卢",
+      "latitude": -22.9068,
+      "longitude": -43.1729
+    },
+    {
+      "name": "波哥大",
+      "latitude": 4.7110,
+      "longitude": -74.0721
+    },
+    {
+      "name": "加拉加斯",
+      "latitude": 10.4806,
+      "longitude": -66.9036
+    },
+    {
+      "name": "阿克拉",
+      "latitude": 5.6037,
+      "longitude": -0.1870
+    },
+    {
+      "name": "阿尔及尔",
+      "latitude": 36.7538,
+      "longitude": 3.0588
+    },
+    {
+      "name": "达喀尔",
+      "latitude": 14.7167,
+      "longitude": -17.4677
+    },
+    {
+      "name": "德黑兰",
+      "latitude": 35.6892,
+      "longitude": 51.3890
+    },
+    {
+      "name": "卡拉奇",
+      "latitude": 24.8607,
+      "longitude": 67.0011
+    },
+    {
+      "name": "拉合尔",
+      "latitude": 31.5497,
+      "longitude": 74.3436
+    },
+    {
+      "name": "加德满都",
+      "latitude": 27.7172,
+      "longitude": 85.3240
+    },
+    {
+      "name": "科伦坡",
+      "latitude": 6.9271,
+      "longitude": 79.8612
+    },
+    {
+      "name": "仰光",
+      "latitude": 16.8409,
+      "longitude": 96.1735
+    },
+    {
+      "name": "河内",
+      "latitude": 21.0285,
+      "longitude": 105.8544
+    },
+    {
+      "name": "达卡",
+      "latitude": 23.8103,
+      "longitude": 90.4125
+    },
+    {
+      "name": "阿布扎比",
+      "latitude": 24.4539,
+      "longitude": 54.3773
+    },
+    {
+      "name": "迪拜",
+      "latitude": 25.2048,
+      "longitude": 55.2708
+    },
+    {
+      "name": "多哈",
+      "latitude": 25.276987,
+      "longitude": 51.520008
+    },
+    {
+      "name": "安卡拉",
+      "latitude": 39.9208,
+      "longitude": 32.8541
+    },
+    {
+      "name": "贝鲁特",
+      "latitude": 33.8938,
+      "longitude": 35.5018
+    },
+    {
+      "name": "大马士革",
+      "latitude": 33.5138,
+      "longitude": 36.2765
+    },
+    {
+      "name": "巴格达",
+      "latitude": 33.3152,
+      "longitude": 44.3661
+    },
+    {
+      "name": "埃里温",
+      "latitude": 40.1792,
+      "longitude": 44.4991
+    },
+    {
+      "name": "第比利斯",
+      "latitude": 41.7151,
+      "longitude": 44.8271
+    },
+    {
+      "name": "努尔苏丹",
+      "latitude": 51.1605,
+      "longitude": 71.4704
+    },
+    {
+      "name": "塔什干",
+      "latitude": 41.2995,
+      "longitude": 69.2401
+    },
+    {
+      "name": "比什凯克",
+      "latitude": 42.8746,
+      "longitude": 74.5698
+    },
+    {
+      "name": "阿什哈巴德",
+      "latitude": 37.9601,
+      "longitude": 58.3261
+    },
+    {
+      "name": "第聂伯罗",
+      "latitude": 48.4647,
+      "longitude": 35.0462
+    },
+    {
+      "name": "华沙",
+      "latitude": 52.2297,
+      "longitude": 21.0122
+    },
+    {
+      "name": "布达佩斯",
+      "latitude": 47.4979,
+      "longitude": 19.0402
+    },
+    {
+      "name": "布加勒斯特",
+      "latitude": 44.4268,
+      "longitude": 26.1025
+    },
+    {
+      "name": "贝尔格莱德",
+      "latitude": 44.7866,
+      "longitude": 20.4489
+    },
+    {
+      "name": "索非亚",
+      "latitude": 42.6975,
+      "longitude": 23.3242
+    },
+    {
+      "name": "萨拉热窝",
+      "latitude": 43.8563,
+      "longitude": 18.4131
+    },
+    {
+      "name": "基希讷乌",
+      "latitude": 47.0105,
+      "longitude": 28.8638
+    },
+    {
+      "name": "圣萨尔瓦多",
+      "latitude": 13.6929,
+      "longitude": -89.2182
+    },
+    {
+      "name": "哈瓦那",
+      "latitude": 23.1136,
+      "longitude": -82.3666
+    },
+    {
+      "name": "金斯敦",
+      "latitude": 17.9712,
+      "longitude": -76.7936
+    },
+    {
+      "name": "金边",
+      "latitude": 11.5564,
+      "longitude": 104.9282
+    },
+    {
+      "name": "万象",
+      "latitude": 17.9757,
+      "longitude": 102.6331
+    },
+    {
+      "name": "阿克拉",
+      "latitude": 5.6037,
+      "longitude": -0.1870
+    },
+    {
+      "name": "卢萨卡",
+      "latitude": -15.3875,
+      "longitude": 28.3228
+    },
+    {
+      "name": "哈拉雷",
+      "latitude": -17.8252,
+      "longitude": 31.0335
+    },
+    {
+      "name": "安塔那那利佛",
+      "latitude": -18.8792,
+      "longitude": 47.5079
+    }
+  ]
