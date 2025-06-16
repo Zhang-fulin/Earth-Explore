@@ -1,9 +1,12 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useGlobe } from './useGlobe'
+import { News } from '../types';
+import { MessageDetail } from '../message/message-detail';
 
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null);
-  useGlobe(globeRef);
+  const [selectedNews, setSelectedNews] = useState<News | null>(null);
+  useGlobe(globeRef, setSelectedNews);
   return (
     <div
       ref={globeRef}
@@ -16,6 +19,10 @@ export default function GlobeComponent() {
         background: 'black',
         overflow: 'hidden'
       }}
-    />
+    >
+        {selectedNews && (
+            <MessageDetail news={selectedNews} onClose={() => setSelectedNews(null)} />
+        )}
+    </div>    
   )
 }
