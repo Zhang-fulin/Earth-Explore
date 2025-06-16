@@ -3,7 +3,7 @@ import Globe from 'globe.gl'
 import { supabase } from './supabase'
 import { FontLoader} from 'three-stdlib';
 import city from './assets/city.json'
-import rawFontData from './assets/font.json'
+import rawFontData from './assets/font_filtered_by_cities.json'
 const fontData = rawFontData as any;
 
 type News = {
@@ -15,7 +15,7 @@ type News = {
   lon: number;
 };
 
-const version = '1.0.1'
+const version = '1.0.3'
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
   
@@ -36,8 +36,8 @@ export default function GlobeComponent() {
       .showGlobe(true)
       .showGraticules(true)
 
-    // world.controls().autoRotate = true
-    // world.controls().autoRotateSpeed = 0.5
+    world.controls().autoRotate = true
+    world.controls().autoRotateSpeed = 1
     
     const loader = new FontLoader();
     const font = loader.parse(fontData);
