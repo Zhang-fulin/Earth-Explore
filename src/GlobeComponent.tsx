@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react'
 import Globe from 'globe.gl'
 import { supabase } from './supabase'
-import { FontLoader } from 'three-stdlib';
+import { FontLoader} from 'three-stdlib';
+import city from './assets/city.json'
+import rawFontData from './assets/font_filtered_by_cities.json'
+const fontData = rawFontData as any;
 
 type News = {
   id: string;
@@ -12,7 +15,7 @@ type News = {
   lon: number;
 };
 
-const version = '1.0.0'
+const version = '1.0.3'
 export default function GlobeComponent() {
   const globeRef = useRef<HTMLDivElement>(null)
   
@@ -28,49 +31,28 @@ export default function GlobeComponent() {
         logarithmicDepthBuffer: true,
       }
     })
-      .globeImageUrl('/Earth-Explore/earth-blue-marble.jpg')
-      .backgroundImageUrl('/Earth-Explore/night-sky.png')
+      .globeImageUrl('earth-blue-marble.jpg')
+      .backgroundImageUrl('night-sky.png')
       .showGlobe(true)
       .showGraticules(true)
 
-    // world.controls().autoRotate = true
-    // world.controls().autoRotateSpeed = 0.5
+    world.controls().autoRotate = true
+    world.controls().autoRotateSpeed = 1
     
-    // fetch('/Earth-Explore/submarine-cables.json').then(r => r.json()).then(cablesGeo => {
-    //   let cablePaths:any[] = [];
-    //   cablesGeo.features.forEach(({ geometry, properties }:any) => {
-    //     geometry.coordinates.forEach((coords:any) => cablePaths.push({ coords, properties }));
-    //   });
-
-    //   world
-    //     .pathsData(cablePaths)
-    //     .pathPoints('coords')
-    //     .pathPointLat((p:any) => p[1])
-    //     .pathPointLng((p:any) => p[0])
-    //     .pathColor((path:any) => path.properties.color)
-    //     .pathDashLength(0.1)
-    //     .pathStroke(1)
-    //     .pathDashGap(0.008)
-    //     .pathDashAnimateTime(10000);
-    // });
     const loader = new FontLoader();
-    loader.load('/Earth-Explore/font.json', (font: any) => {
-      fetch('/Earth-Explore/city.json')
-        .then((res) => res.json())
-        .then((city) => {
-          world
-            .labelsData(city)
-            .labelTypeFace(font.data)
-            .labelLat((d: any) => d.latitude)
-            .labelLng((d: any) => d.longitude)
-            .labelText((d: any) => d.name)
-            .labelAltitude(0.005)
-            .labelSize(0.3)
-            .labelDotRadius(0.1)
-            .labelColor(() => 'rgba(0, 255, 60, 0.75)')
-            .labelResolution(4);
-        });
-    });
+    const font = loader.parse(fontData);
+
+    world
+      .labelsData(city)
+      .labelTypeFace(font.data)  // 注意这里直接传 font 对象，不是 font.data
+      .labelLat((d: any) => d.latitude)
+      .labelLng((d: any) => d.longitude)
+      .labelText((d: any) => d.name)
+      .labelAltitude(0.001)
+      .labelSize(0.1)
+      .labelDotRadius(0.1)
+      .labelColor(() => 'rgba(0,255,255,0.9)')
+      .labelResolution(4);
 
     const MessageBox = (d: News) => `
   <div class="globe-message-box" style="
