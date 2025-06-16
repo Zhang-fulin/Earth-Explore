@@ -11,8 +11,8 @@ export function setupGlobe(container: HTMLDivElement) {
     .showGlobe(true)
     .showGraticules(true);
 
-  world.controls().autoRotate = true;
-  world.controls().autoRotateSpeed = 1;
+  // world.controls().autoRotate = true;
+  // world.controls().autoRotateSpeed = 1;
 
   return world;
 }
