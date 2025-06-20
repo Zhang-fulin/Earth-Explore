@@ -21,14 +21,14 @@
 
 .globe-message-box-title {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 10px;
   color: #222;
   margin-bottom: 6px;
   line-height: 1.4;
 }
 
 .globe-message-box-content {
-  font-size: 9px;
+  font-size: 7px;
   color: #444;
   line-height: 1.6;
 }
