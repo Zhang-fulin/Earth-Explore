@@ -5,9 +5,8 @@ export async function fetchTodayNews(): Promise<News[]> {
   const now = new Date();
   const startOfDay = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const currentDateISOString = startOfDay.toISOString();
-
   const { data, error } = await supabase
-    .from('today-news')
+    .from('cctv-news')
     .select('*')
     .gte('time', currentDateISOString);
 
