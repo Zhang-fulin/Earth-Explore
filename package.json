@@ -20,6 +20,7 @@
     "date-fns": "^4.1.0",
     "dompurify": "^3.2.6",
     "globe.gl": "^2.41.4",
+    "keen-slider": "^6.8.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "three": "^0.175.0",
