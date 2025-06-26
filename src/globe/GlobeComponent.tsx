@@ -3,10 +3,10 @@ import { useGlobe } from './useGlobe'
 import { News } from '../types';
 import { MessageDetail } from '../message/message-detail';
 
-export default function GlobeComponent() {
+export default function GlobeComponent({news}:{news: News[]}) {
   const globeRef = useRef<HTMLDivElement>(null);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
-  useGlobe(globeRef, setSelectedNews);
+  useGlobe(globeRef, news, setSelectedNews);
   return (
     <div
       ref={globeRef}

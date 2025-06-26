@@ -1,0 +1,77 @@
+.wheel.keen-slider {
+  display: block;
+  color: #fff;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.wheel__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+}
+
+.wheel__slides {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.wheel__label {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 1;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+.wheel__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center; /* ✅ 水平居中 */
+  align-items: center;     /* ✅ 垂直居中 */
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.wheel__shadow-left,
+.wheel__shadow-right {
+  position: absolute;
+  top: 0;
+  width: 35%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.wheel__shadow-left {
+  left: 0;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.wheel__shadow-right {
+  right: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
