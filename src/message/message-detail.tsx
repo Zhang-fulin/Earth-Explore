@@ -3,7 +3,7 @@ import './message-detail.css';
 import 'react-resizable/css/styles.css';
 import { News } from '../types';
 import DOMPurify from 'dompurify';
-import { ResizableBox, Resizable } from 'react-resizable';
+import { ResizableBox } from 'react-resizable';
 
 export function MessageDetail({ news, onClose }: { news: News; onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
