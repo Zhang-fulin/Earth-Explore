@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useGlobe } from './useGlobe'
 import { News } from '../types';
 import { MessageDetail } from '../message/message-detail';
@@ -6,6 +6,11 @@ import { MessageDetail } from '../message/message-detail';
 export default function GlobeComponent({news}:{news: News[]}) {
   const globeRef = useRef<HTMLDivElement>(null);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
+
+  useEffect(() => {
+    setSelectedNews(null);
+  }, [news]);
+
   useGlobe(globeRef, news, setSelectedNews);
   return (
     <div

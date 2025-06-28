@@ -1,18 +1,17 @@
-.bottom-time-panel {
+.bottom-xxx-panel {
   position: fixed;
   left: 50%;
-  bottom: 5%;
-  transform: translateX(-50%);
+
   width: 80%;
-  height: 50px;
+  height: 40px;
   max-width: 300px;
   display: flex;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
   padding: 0px 16px;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1.5px solid rgba(255, 255, 255, 0.9);
@@ -20,7 +19,18 @@
   overflow: hidden;
 }
 
-.bottom-time-panel-inner {
+.bottom-xxx-panel-inner {
   width: 100%;
   height: 100%;
 }
+
+.bottom-source-panel {
+  bottom: 6%;
+  transform: translate(-50%, -20px);
+}
+
+.bottom-time-panel {
+  bottom: 6%;
+  transform: translate(-50%, 50%);
+}
+

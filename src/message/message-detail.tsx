@@ -25,7 +25,10 @@ export function MessageDetail({ news, onClose }: { news: News; onClose: () => vo
           resizeHandles={['s']}
           axis="y"
           className='message-detail-container-resize'
-          minConstraints={[0, 100]} 
+          minConstraints={[0, 100]}
+          handle={
+            <span className="custom-handle custom-handle-s">≡</span>
+          }
         >
           <div className="message-detail">
             <h3>{news.title}</h3>
