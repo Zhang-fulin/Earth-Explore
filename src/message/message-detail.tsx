@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
-import './message-detail.css'
+import './message-detail.css';
+import 'react-resizable/css/styles.css';
 import { News } from '../types';
 import DOMPurify from 'dompurify';
+import { ResizableBox } from 'react-resizable';
 
 export function MessageDetail({ news, onClose }: { news: News; onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -16,13 +18,26 @@ export function MessageDetail({ news, onClose }: { news: News; onClose: () => vo
   }, [onClose]);
 
   return (
-    <div className="message-detail" ref={ref}>
-      <h3>{news.title}</h3>
-      <h4>{news.info}</h4>
-      <div
-        className="message-content"
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(news.content) }}
-      />
+    <div ref={ref} className="message-detail-container">
+      <ResizableBox
+          width={500}
+          height={500}
+          resizeHandles={['s']}
+          axis="y"
+          className='message-detail-container-resize'
+          minConstraints={[0, 100]}
+          handle={
+            <span className="custom-handle custom-handle-s">≡</span>
+          }
+        >
+          <div className="message-detail">
+            <h3>{news.title}</h3>
+            <h4>{news.info}</h4>
+            <div className='message-detail-content'
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(news.content) }}
+            />
+          </div> 
+      </ResizableBox>
     </div>
   );
 }

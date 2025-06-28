@@ -1,5 +1,5 @@
 import Wheel from "./Wheel";
-import "./BottomTimePanel.css";
+import "./BottomXXXPanel.css"
 
 export default function BottomTimePanel({
   onHourChange,
@@ -10,8 +10,8 @@ export default function BottomTimePanel({
   const currentHour = now.getHours();
 
   return (
-    <div className="bottom-time-panel">
-      <div className="bottom-time-panel-inner">
+    <div className="bottom-xxx-panel bottom-time-panel">
+      <div className="bottom-xxx-panel-inner">
         <Wheel
           initIdx={currentHour}
           length={24}
@@ -23,10 +23,9 @@ export default function BottomTimePanel({
             return `${hour.toString().padStart(2, "0")}:00`;
           }}
           onChange={(relative, absolute) => {
-            relative;
-            const hour = ((absolute % 24) + 24) % 24;
+            absolute;
             const now = new Date();
-            now.setHours(hour, 0, 0, 0);
+            now.setHours(relative, 0, 0, 0);
             onHourChange(now.getUTCHours());
           }}
         />

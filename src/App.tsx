@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import GlobeComponent from "./globe/GlobeComponent"
 import BottomTimePanel from "./components/BottomTimePanel"
+import BottomSourcePanel from './components/BottomSourcePanel';
 import { fetchTodayNews } from "./services/newsService"
 import { News } from './types';
+
+// if (import.meta.env.DEV) {
+//   import('./debug.css');
+// }
 
 function App() {
 
   const [allNews, setAllNews] = useState<News[]>([]);
   const [utcHour, setUtcHour] = useState<number>(new Date().getUTCHours());
+  const [newsSource, setNewsSource] = useState<string>('CCTV');
   const [filteredNews, setFilteredNews] = useState<News[]>([]);
 
   useEffect(() => {
@@ -26,17 +32,17 @@ function App() {
     };
   }, []);
 
-  function filterNewsByUtcHour(newsList: News[], targetHour: number): News[] {
+  function filterNewsByUtcHour(newsList: News[], targetHour: number, newsSource: string): News[] {
     return newsList.filter(item => {
       const itemHour = new Date(item.time).getUTCHours();
-      return itemHour === targetHour;
+      return itemHour === targetHour && newsSource === item.source;
     });
   }
 
   useEffect(() => {
-    const filtered = filterNewsByUtcHour(allNews, utcHour);
+    const filtered = filterNewsByUtcHour(allNews, utcHour, newsSource);
     setFilteredNews(filtered);
-  }, [allNews, utcHour]);
+  }, [allNews, utcHour, newsSource]);
 
 
 
@@ -48,6 +54,20 @@ function App() {
           setUtcHour(utc_Hour);
         }}
       />
+      <BottomSourcePanel
+        onSourceChange={(source) => {
+          setNewsSource(source)
+        }}
+      />
+
+      {/* {import.meta.env.DEV && (
+        <>
+          <div className="debug-line top-6"></div>
+          <div className="debug-line bottom-5-40px"></div>
+          <div className="debug-line center-50"></div>
+          <div className="debug-line bottom-6"></div>
+        </>
+      )} */}
     </div>
   )
 }

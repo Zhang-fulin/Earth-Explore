@@ -1,0 +1,26 @@
+.debug-line {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: red;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.top-6 {
+  top: 6%;
+}
+
+.bottom-5-40px {
+  bottom: 6%;
+  transform: translate(0, -40px);
+}
+
+.center-50 {
+  bottom: 50%;
+}
+
+.bottom-6 {
+  bottom: 6%;
+}

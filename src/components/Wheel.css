@@ -1,6 +1,6 @@
 .wheel.keen-slider {
   display: block;
-  color: #fff;
+  color: #060606;
   height: 100%;
   overflow: visible;
   width: 100%;
@@ -44,7 +44,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 400;
 }
 
@@ -52,7 +52,7 @@
 .wheel__shadow-right {
   position: absolute;
   top: 0;
-  width: 35%;
+  width: 38%;
   height: 100%;
   z-index: 5;
   pointer-events: none;
@@ -62,8 +62,8 @@
   left: 0;
   background: linear-gradient(
     to left,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(132, 169, 212, 0.1) 0%,
+    rgba(132, 169, 212, 0.6) 100%
   );
 }
 
@@ -71,7 +71,7 @@
   right: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(132, 169, 212, 0.1) 0%,
+    rgba(132, 169, 212, 0.6) 100%
   );
 }
