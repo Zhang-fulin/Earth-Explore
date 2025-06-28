@@ -1,6 +1,15 @@
 import { News } from '../types';
 import { MessagePreview } from '../message/message-preview';
 
+function randomOffsetLatLon(lat: number, lon: number, maxDegree = 0.5) {
+  const latOffset = (Math.random() - 0.5) * 2 * maxDegree;
+  const lonOffset = (Math.random() - 0.5) * 2 * maxDegree;
+  return {
+    lat: lat + latOffset,
+    lon: lon + lonOffset,
+  };
+}
+
 export function renderNews(
   world: any,
   news: News[],
@@ -25,8 +34,8 @@ export function renderNews(
 
       return el;
     })
-    .htmlLat((d: News) => d.lat)
-    .htmlLng((d: News) => d.lon)
+    .htmlLat((d: News) => randomOffsetLatLon(d.lat, d.lon).lat)
+    .htmlLng((d: News) => randomOffsetLatLon(d.lat, d.lon).lon)
     .htmlElementVisibilityModifier((el: HTMLElement, isVisible: boolean) => {
       el.style.visibility = isVisible ? 'visible' : 'hidden';
     });
