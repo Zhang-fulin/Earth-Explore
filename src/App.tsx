@@ -3,6 +3,7 @@ import GlobeComponent from "./globe/GlobeComponent"
 import BottomTimePanel from "./components/BottomTimePanel"
 import BottomSourcePanel from './components/BottomSourcePanel';
 import { fetchTodayNews } from "./services/newsService"
+import { NewsSourceDict } from './types';
 import { News } from './types';
 
 // if (import.meta.env.DEV) {
@@ -33,9 +34,13 @@ function App() {
   }, []);
 
   function filterNewsByUtcHour(newsList: News[], targetHour: number, newsSource: string): News[] {
+
+    if (newsSource === "ALL") {
+        return allNews
+    }
+
     return newsList.filter(item => {
-      const itemHour = new Date(item.time).getUTCHours();
-      return itemHour === targetHour && newsSource === item.source;
+      return newsSource === item.source;
     });
   }
 
@@ -49,11 +54,11 @@ function App() {
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
       <GlobeComponent news={filteredNews}/> 
-      <BottomTimePanel
+      {/* <BottomTimePanel
         onHourChange={(utc_Hour) => {
           setUtcHour(utc_Hour);
         }}
-      />
+      /> */}
       <BottomSourcePanel
         onSourceChange={(source) => {
           setNewsSource(source)

@@ -10,9 +10,10 @@ export type News = {
   source: string;
 };
 
-type NewsSourceKey = "CCTV" | "CCTV_C";
+type NewsSourceKey = "ALL" | "CCTV" | "CCTV_C" ;
 
 export const NewsSourceDict: Record<NewsSourceKey, string> = {
+  ALL: "全部",
   CCTV: "CCTV国际",
   CCTV_C: "CCTV国内",
 };
