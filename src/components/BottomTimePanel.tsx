@@ -18,9 +18,7 @@ export default function BottomTimePanel({
           width={100}
           loop={true}
           setValue={(relative, absolute) => {
-            relative;
-            const hour = ((absolute % 24) + 24) % 24;
-            return `${hour.toString().padStart(2, "0")}:00`;
+            return `|||||||||`;
           }}
           onChange={(relative, absolute) => {
             absolute;

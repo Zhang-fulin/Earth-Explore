@@ -1,7 +1,7 @@
 import { News } from '../types';
 import { MessagePreview } from '../message/message-preview';
 
-function randomOffsetLatLon(lat: number, lon: number, maxDegree = 0.5) {
+function randomOffsetLatLon(lat: number, lon: number, maxDegree = 1) {
   const latOffset = (Math.random() - 0.5) * 2 * maxDegree;
   const lonOffset = (Math.random() - 0.5) * 2 * maxDegree;
   return {

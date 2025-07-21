@@ -1,24 +1,15 @@
 import { useEffect, useState } from 'react';
-import GlobeComponent from "./globe/GlobeComponent"
-import BottomTimePanel from "./components/BottomTimePanel"
-import BottomSourcePanel from './components/BottomSourcePanel';
-import { fetchTodayNews } from "./services/newsService"
-import { NewsSourceDict } from './types';
+import GlobeComponent from "./globe/GlobeComponent";
+import BottomTimePanel from "./components/BottomTimePanel";
+import { fetchTodayNews } from "./services/newsService";
 import { News } from './types';
 
-// if (import.meta.env.DEV) {
-//   import('./debug.css');
-// }
-
 function App() {
-
   const [allNews, setAllNews] = useState<News[]>([]);
   const [utcHour, setUtcHour] = useState<number>(new Date().getUTCHours());
-  const [newsSource, setNewsSource] = useState<string>('CCTV');
-  const [filteredNews, setFilteredNews] = useState<News[]>([]);
+  const [visibleNews, setVisibleNews] = useState<News[]>([]);
 
   useEffect(() => {
-
     const fetchAndSetNews = () => {
       fetchTodayNews()
         .then(setAllNews)
@@ -27,41 +18,27 @@ function App() {
 
     fetchAndSetNews();
     const intervalId = setInterval(fetchAndSetNews, 5 * 60 * 1000);
-   
-    return () => {
-      clearInterval(intervalId);
-    };
+    return () => clearInterval(intervalId);
   }, []);
 
-  function filterNewsByUtcHour(newsList: News[], targetHour: number, newsSource: string): News[] {
-
-    if (newsSource === "ALL") {
-        return allNews
-    }
-
-    return newsList.filter(item => {
-      return newsSource === item.source;
-    });
+  function getRandomNewsSubset(newsList: News[], maxCount: number): News[] {
+    const shuffled = [...newsList].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, Math.min(maxCount, shuffled.length));
   }
 
   useEffect(() => {
-    const filtered = filterNewsByUtcHour(allNews, utcHour, newsSource);
-    setFilteredNews(filtered);
-  }, [allNews, utcHour, newsSource]);
-
+    const filtered = getRandomNewsSubset(allNews, 5);
+    setVisibleNews(filtered);
+  }, [allNews, utcHour]);
 
 
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
-      <GlobeComponent news={filteredNews}/> 
-      {/* <BottomTimePanel
+      <GlobeComponent news={visibleNews} />
+
+      <BottomTimePanel
         onHourChange={(utc_Hour) => {
           setUtcHour(utc_Hour);
-        }}
-      /> */}
-      <BottomSourcePanel
-        onSourceChange={(source) => {
-          setNewsSource(source)
         }}
       />
 
@@ -74,7 +51,7 @@ function App() {
         </>
       )} */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
